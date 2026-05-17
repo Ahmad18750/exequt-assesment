@@ -1,0 +1,223 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: ExeQut Assessment
+meta:
+  id: wrk_a653266fbd0748709ac838b42066bfe0
+  created: 1779042653109
+  modified: 1779042653109
+  description: ""
+collection:
+  - name: Cart
+    meta:
+      id: fld_7b7d5bcd04294210b6c86b8fa426fc89
+      created: 1779048960118
+      modified: 1779049647790
+      sortKey: -1779049074338
+      description: ""
+    children:
+      - url: http://localhost:8080/carts
+        name: Create cart
+        meta:
+          id: req_19ef31d757954365bedecfabc4f55ae6
+          created: 1779042661734
+          modified: 1779048966647
+          isPrivate: false
+          description: ""
+          sortKey: -1779048966635
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/carts/{{cartId}}/items
+        name: Add item to cart
+        meta:
+          id: req_2e2d7f2d59ba4966a61ff752acb8f323
+          created: 1779048644051
+          modified: 1779048974871
+          isPrivate: false
+          description: ""
+          sortKey: -1779048966610
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+            	{"productId":1,
+            	"quantity":2,
+            	"price":100.0
+            	}
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/carts/{{cartId}}/{{itemId}}
+        name: Delete item from cart
+        meta:
+          id: req_dc734825df864867aaa426e0f4efd081
+          created: 1779048849393
+          modified: 1779048973729
+          isPrivate: false
+          description: ""
+          sortKey: -1779048966585
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Order
+    meta:
+      id: fld_792254d9da3e4a7c82fe431969c02e56
+      created: 1779048980147
+      modified: 1779049648909
+      sortKey: -1779049074288
+      description: ""
+    children:
+      - url: http://localhost:8080/orders/{{cartId}}/checkout
+        name: Checkout cart
+        meta:
+          id: req_659d4efa5d65445d947854157076dd3d
+          created: 1779048808597
+          modified: 1779048992964
+          isPrivate: false
+          description: ""
+          sortKey: -1779048989923
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/orders/{{orderId}}/payment/start
+        name: Init payment
+        meta:
+          id: req_c9b81fb3d3d2492eb453fc7cf125bea4
+          created: 1779048890822
+          modified: 1779048991792
+          isPrivate: false
+          description: ""
+          sortKey: -1779048989823
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/orders/{{orderId}}/cancel
+        name: Cancel order
+        meta:
+          id: req_894d101ecea7427e8acf32765757d668
+          created: 1779049022730
+          modified: 1779049057367
+          isPrivate: false
+          description: ""
+          sortKey: -1779048989873
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Payment webhook
+    meta:
+      id: fld_a9f311abd1b64f0c8b4cbee75f0c9304
+      created: 1779049074238
+      modified: 1779049074238
+      sortKey: -1779049074238
+      description: ""
+    children:
+      - url: http://localhost:8080/payments/webhook/{{paymentId}}
+        name: webhook
+        meta:
+          id: req_06a4ff36860340458f92d9f4c6440be5
+          created: 1779049077469
+          modified: 1779049133916
+          isPrivate: false
+          description: ""
+          sortKey: -1779049077469
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d257e1b73a4352e04f8f06f576a834c378713b48
+    created: 1779042653111
+    modified: 1779042653111
+environments:
+  name: Base Environment
+  meta:
+    id: env_d257e1b73a4352e04f8f06f576a834c378713b48
+    created: 1779042653110
+    modified: 1779049117459
+    isPrivate: false
+  data:
+    cartId: "1"
+    itemId: "1"
+    orderId: "1"
+    paymentId: "1"
